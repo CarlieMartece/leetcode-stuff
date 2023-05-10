@@ -5,17 +5,15 @@ var rotate = function(nums, k) {
     if (k > nums.length) {
         k = k % nums.length;
     }
-    let swapIndexes = [];
-    for (let i = 0; i < nums.length; i++) {
-        swapIndexes.push(i);
-    }
-    const toRotate = swapIndexes.splice(-k, nums.length);
-    swapIndexes.unshift(toRotate);
-    const swaps = swapIndexes.flat();
     const numsCopy = [...nums];
+    const toRotate = numsCopy.splice(-k, nums.length);
+    numsCopy.unshift(toRotate);
+    const copy = numsCopy.flat();
+    
     for (let i = 0; i < nums.length; i++) {
-        nums[i] = numsCopy[swaps[i]];
+        nums[i] = copy[i];
     }
+    console.log(nums)
     return nums;
 };
 

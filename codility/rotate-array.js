@@ -3,8 +3,7 @@ function solution(A, K) {
         return [];
     }
     if (K > A.length) {
-        const croppedK = K - A.length;
-        return solution(A, croppedK);
+        K = K % A.length;
     }
     const spliced = A.splice(-K, K);
     A.unshift(spliced);

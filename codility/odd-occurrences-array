@@ -1,19 +1,11 @@
 function solution(A) {
-    let countObj = {};
-    let found;
-    A.forEach((item) => {
-        if (!countObj.hasOwnProperty(item)) {
-            countObj[item] = 1;
-        } else {
-            countObj[item]++;
-        }
-    })
-    for (item in countObj) {
-        if (countObj[item] % 2 === 1) {
-            found = item;
+    A = A.sort();
+    for (let i = 0; i < A.length - 1; i += 2) {
+        if (A[i] !== A[i + 1]) {
+            return A[i];
         }
     }
-    return Number(found); 
+    return A[A.length - 1];
 }
 
-solution([9, 3, 9, 3, 9, 7, 9])
+console.log(solution([5, 3, 5, 3, 5, 7, 5]))
